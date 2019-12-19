@@ -65,6 +65,8 @@ namespace ConsoleApp1
       //クライアントが接続した時の処理をここに書く
       //ここでは文字列を送信して、すぐに閉じている
       client.Send(System.Text.Encoding.UTF8.GetBytes("こんにちは。"));
+
+      Thread.Sleep(1000);
       client.Shutdown(System.Net.Sockets.SocketShutdown.Both);
       client.Close();
 
