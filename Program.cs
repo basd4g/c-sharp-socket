@@ -34,8 +34,8 @@ namespace ConsoleApp1
     {
       while(true)
       {
-        allDone.Reset();
         //接続要求待機を開始する
+        allDone.Reset();
         server.BeginAccept(new System.AsyncCallback(AcceptCallback), server);
         Console.WriteLine("Waiting for a connection...");
         allDone.WaitOne();
@@ -45,10 +45,11 @@ namespace ConsoleApp1
     //BeginAcceptのコールバック
     private static void AcceptCallback(System.IAsyncResult ar)
     {
-    //サーバーSocketの取得
-    System.Net.Sockets.Socket server = (System.Net.Sockets.Socket)ar.AsyncState;
+      allDone.Set();
+      //サーバーSocketの取得
+      System.Net.Sockets.Socket server = (System.Net.Sockets.Socket)ar.AsyncState;
 
-    //接続要求を受け入れる
+      //接続要求を受け入れる
       System.Net.Sockets.Socket client = null;
       try
       {
