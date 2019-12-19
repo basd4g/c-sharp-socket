@@ -11,50 +11,22 @@ namespace ConsoleApp1
 {
     class Program
     {
-        
-
         static void Main()
         {
-            
-            /*
-            IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
-            IPAddress ipAddress = ipHostInfo.AddressList[0];
-            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11000);
-            
-            Socket listener = new Socket(ipAddress.AddressFamily,SocketType.Stream, ProtocolType.Tcp);
-            listener.Bind(localEndPoint);
-            listener.Listen(100);
-            */
-            Console.WriteLine("1");
-
-            string ipString = "172.16.37.233";
-            string Endport = "100";
-            Console.WriteLine("2");
+            string ipString = "127.0.0.1";
 
             System.Net.IPAddress ipAdd = System.Net.IPAddress.Parse(ipString);
-            Console.WriteLine("3");
 
             int port = 2001;
-            Console.WriteLine("4");
-
-            IPEndPoint localEndPoint = new IPEndPoint(ipAdd, int.Parse(Endport));
-            Console.WriteLine("5");
+            IPEndPoint localEndPoint = new IPEndPoint(ipAdd, port); 
 
             Socket listener = new Socket(ipAdd.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-            Console.WriteLine("6");
 
             listener.Bind(localEndPoint);
-            Console.WriteLine("7");
             listener.Listen(100);
-            Console.WriteLine("8");
             StartAccept(listener);
-            Console.WriteLine("9");
             System.Threading.Thread.Sleep(2000);
-
         }
-
-      
-
 
         //クライアントの接続待ちスタート
         private static void StartAccept(System.Net.Sockets.Socket server)
@@ -67,7 +39,6 @@ namespace ConsoleApp1
             Console.WriteLine("11");
             System.Threading.Thread.Sleep(2000);
         }
-
 
         //BeginAcceptのコールバック
         private static void AcceptCallback(System.IAsyncResult ar)
