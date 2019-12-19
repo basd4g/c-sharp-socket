@@ -32,11 +32,14 @@ namespace ConsoleApp1
     //クライアントの接続待ちスタート
     private static void StartAccept(System.Net.Sockets.Socket server)
     {
+      while(true)
+      {
         allDone.Reset();
         //接続要求待機を開始する
         server.BeginAccept(new System.AsyncCallback(AcceptCallback), server);
         Console.WriteLine("Waiting for a connection...");
         allDone.WaitOne();
+      }
     }
 
     //BeginAcceptのコールバック
@@ -64,8 +67,6 @@ namespace ConsoleApp1
       client.Shutdown(System.Net.Sockets.SocketShutdown.Both);
       client.Close();
 
-      //接続要求待機を再開する
-      StartAccept(server);
     }
   }
 }
