@@ -29,13 +29,19 @@ System.Net.Sockets.SocketException (0x80004005): The requested address is not va
 ```
 ### ipアドレスを127.0.0.1に変更
 
+IPアドレスをローカルループバックアドレスに設定した。
+
+この変更によりエラーなく実行できたが、接続要求を受け取る前にプログラムが自動終了してしまう。
+
 ### BeginAcceptを繰り返し実行
 
 BeginAccept(listener)は非同期のため、接続要求がなくても値を返してしまう。そこで、ManualResetEventを組み合わせて繰り返し実行し、この行の値が返ってもプログラムを終了させず、繰り返し実行するようにした。
 
+この変更により接続要求を正常に受け付けていることが確認できた
 
-参考: [非同期サーバー ソケットの使用](https://docs.microsoft.com/ja-jp/dotnet/framework/network-programming/using-an-asynchronous-server-socket)
-参考: [C# 非同期ソケット通信で簡易サーバーを作成 - エクセレンス★ブログ](https://www.excellence-blog.com/2018/06/08/c-%E9%9D%9E%E5%90%8C%E6%9C%9F%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E9%80%9A%E4%BF%A1%E3%81%A7%E7%B0%A1%E6%98%93%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E4%BD%9C%E6%88%90/)
+
+参考: [非同期サーバー ソケットの使用](https://docs.microsoft.com/ja-jp/dotnet/framework/network-programming/using-an-asynchronous-server-socket)  
+参考: [C# 非同期ソケット通信で簡易サーバーを作成 - エクセレンス★ブログ](https://www.excellence-blog.com/2018/06/08/c-%E9%9D%9E%E5%90%8C%E6%9C%9F%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E9%80%9A%E4%BF%A1%E3%81%A7%E7%B0%A1%E6%98%93%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E4%BD%9C%E6%88%90/)  
 
 ### (やってない)動いているサンプルプログラムと比較する
 
