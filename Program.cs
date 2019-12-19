@@ -27,19 +27,19 @@ namespace ConsoleApp1
       listener.Bind(localEndPoint);
       listener.Listen(100);
         
-      while(true)
-      {
-        allDone.Reset();
-        StartAccept(listener);
-        allDone.WaitOne();
-      }
+      StartAccept(listener);
     }
-
     //クライアントの接続待ちスタート
     private static void StartAccept(System.Net.Sockets.Socket server)
     {
-      //接続要求待機を開始する
-      server.BeginAccept(new System.AsyncCallback(AcceptCallback), server);
+      while(true)
+      {
+        allDone.Reset();
+        //接続要求待機を開始する
+        server.BeginAccept(new System.AsyncCallback(AcceptCallback), server);
+        Console.WriteLine("Waiting for a connection...");
+        allDone.WaitOne();
+      }
     }
 
     //BeginAcceptのコールバック

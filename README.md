@@ -1,5 +1,14 @@
 # C#-Socket-Communication
 
+## Run
+
+### server program
+
+```sh
+$ mcs Program.cs
+$ mono Program.exe
+```
+
 ## Environment
 
 on macOS 10.14.6
