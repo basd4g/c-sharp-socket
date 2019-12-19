@@ -27,3 +27,7 @@ System.Net.Sockets.SocketException (0x80004005): The requested address is not va
   at System.Net.Sockets.Socket.Bind (System.Net.EndPoint localEP) [0x00043] in <dfffed4750cb49c8ab16f18fc177a88e>:0 
   at ConsoleApp1.Program.Main () [0x00072] in <712b8abf7d1b4ceca17ac9c69535e7df>:0 
 ```
+
+### 動いているサンプルプログラムと比較する
+
+参考: [#Cでsocket通信をしてみる。ついでにnetstatでlistenしているポートを調べる。](http://karoten512.hatenablog.com/entry/2018/03/21/234156)
