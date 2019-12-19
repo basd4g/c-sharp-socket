@@ -16,3 +16,13 @@ $ mono hoge.exe
 ```
 
 reference: [MacでC#のコードをコンパイルして実行する - Qiita](https://qiita.com/matsuda_sinsuke/items/76068f4c396887459803)
+
+## Files
+
+- Program.cs ... main server sorce code
+- server.cs ... sample server source code
+- client.cs ... sample client source code
+
+## History
+
+[developping history](history.md)
